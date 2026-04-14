@@ -7,7 +7,7 @@ function Dashboard() {
   useEffect(() => {
     const token = localStorage.getItem("token");
 
-    axios.get("http://localhost:5000/api/user/me", {
+    axios.get(`${process.env.REACT_APP_API_URL}/api/user/me`, {
       headers: {
         "x-auth-token": token,
       },
