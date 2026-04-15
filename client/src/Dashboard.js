@@ -30,8 +30,11 @@ function Dashboard() {
       } catch (err) {
         if (retryCount < 3) {
           console.log("Retrying...");
-          setRetryCount(prev => prev + 1);
-          setTimeout(fetchUser, 3000);
+          
+          setTimeout(() => {
+            setRetryCount(prev => prev + 1);
+          }, 3000);
+
         } else {
           console.log("Failed after retries");
           setLoading(false);
@@ -40,7 +43,7 @@ function Dashboard() {
     };
 
     fetchUser();
-  }, [retryCount]);
+  }, [API, retryCount]); 
 
   return (
     <div>
